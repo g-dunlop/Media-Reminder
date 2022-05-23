@@ -1,11 +1,11 @@
 import { useState } from "react";
 import Movie from '../components/MoviesContainerComponents/Movie';
 
-const Watched = ({user}) => {
+const Watched = ({user, setNewId}) => {
 
   
     const movies = user[0].watched.map((movie, index) => {
-        return <li><Movie key={index} movie={movie}/></li>
+        return <li><Movie key={index} movie={movie} setNewId={setNewId}/></li>
     })
 
 

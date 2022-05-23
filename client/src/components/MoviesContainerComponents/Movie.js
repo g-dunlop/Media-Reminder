@@ -1,10 +1,11 @@
 import React from "react";
 import {Link} from "react-router-dom";
 import WatchButtons from "../ButtonComponents/WatchButtons";
-const Movie = ({movie, removeSearchResults}) => {
+const Movie = ({movie, setNewId}) => {
 
     const handleClick = (evt) => {
-        removeSearchResults()
+        
+        setNewId(movie.imdbID)
     }
 
     return (

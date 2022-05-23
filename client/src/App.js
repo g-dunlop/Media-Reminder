@@ -6,7 +6,7 @@ import MovieDetailContainer from './containers/MovieDetailContainer';
 
 import StockService from './services/StockServices';
 import UserContext from './context/UserContext';
-import {BrowserRouter, Routes, Route} from "react-router-dom";
+import {BrowserRouter, Routes, Route, Navigate} from "react-router-dom";
 import Watched from "./containers/WatchedContainer";
 import ToWatch from "./containers/ToWatchContainer";
 import Movies from "./containers/MoviesContainer"
@@ -16,6 +16,7 @@ import AppContainer from './containers/AppContainer';
 function App() {
 
   const [user, setUser] = useState(null)
+  const [Id, setId] = useState(null)
   
 
   useEffect(() => {
@@ -29,6 +30,11 @@ function App() {
     .then(data => setUser(data))
 }
 
+  const setNewId = (imdbId) => {
+    setId(imdbId)
+  }
+
+
   return (
     <>
 
@@ -40,8 +46,10 @@ function App() {
           <Route path="movies" element={<Movies />} >  
           </Route>
           <Route path="/movies/:imdbId" element={<MovieDetailContainer />} />
-          <Route path="watched" element={<Watched  user={user} />} />
-          <Route path="towatch" element = {<ToWatch user={user} />} />
+          <Route path="watched" element={<Watched  user={user} setNewId={setNewId} />} />
+            <Route path="/watched/:imdbId" element={<Navigate to={`/movies/${Id}`} />} /> 
+          <Route path="towatch" element = {<ToWatch user={user} setNewId={setNewId} />} />
+            <Route path="/towatch/:imdbId" element={<Navigate to={`/movies/${Id}`} />} />
           <Route path="*" element={
             <main style={{ padding: "1rem" }}>
             <p>There's nothing here!</p>
