@@ -23,7 +23,7 @@ function App() {
     fetchDB()
   }, [])
 
-  
+
   const fetchDB = function(){
     fetch('http://localhost:9000/api/userMovies/')
     .then(res => res.json())
@@ -33,14 +33,6 @@ function App() {
   const setNewId = (imdbId) => {
     setId(imdbId)
   }
-
-  // const addToToWatch = (movie) => {
-  //   console.log(movie)
-  //   const temp = {...user[0]}
-  //   temp.towatch.push(movie)
-  //   MovieService.updateUser(temp)
-  //   .then(() => fetchDB())
-  // }
 
   const addToUser = (movie, list) => {
     console.log(movie)

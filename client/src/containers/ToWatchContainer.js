@@ -7,10 +7,11 @@ const ToWatch = ({user, setNewId}) => {
     // const {user} = useContext(UserContext);
     
     // console.log(user)
+    const [listType, setListType] = useState("towatch")
 
 
     const movies = user[0].towatch.map((movie, index) => {
-        return <li><Movie key={index} movie={movie} setNewId={setNewId}/></li>
+        return <li><Movie key={index} movie={movie} setNewId={setNewId} listType={listType}/></li>
     })
 
     return(

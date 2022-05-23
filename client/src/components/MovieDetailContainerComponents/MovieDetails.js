@@ -12,7 +12,6 @@ const MovieDetails = ({movie, addToUser}) => {
             <h3>Ratings: imdb: {movie.Ratings[0].Value}  rotten tomatoes:{movie.Ratings[1].Value} metacritic: {movie.Ratings[2].Value}</h3>
             <p>Box Office: {movie.BoxOffice}</p>
             <WatchButtons addToUser={addToUser} movie={movie}/>
-        
         </>
     )
 }

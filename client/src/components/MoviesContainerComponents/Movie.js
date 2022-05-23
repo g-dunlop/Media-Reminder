@@ -1,10 +1,9 @@
 import React from "react";
 import {Link} from "react-router-dom";
 import WatchButtons from "../ButtonComponents/WatchButtons";
-const Movie = ({movie, setNewId, addToUser}) => {
+const Movie = ({movie, setNewId, addToUser, listType}) => {
 
     const handleClick = (evt) => {
-        
         setNewId(movie.imdbID)
     }
 
@@ -20,7 +19,7 @@ const Movie = ({movie, setNewId, addToUser}) => {
                 <h4>Year: {movie.Year}</h4>
                 <h4>Type: {movie.Type}</h4>
                 {/* <h4>Year: {movie.imdbID}</h4> */}
-                <WatchButtons movie={movie} addToUser={addToUser}/>
+                <WatchButtons movie={movie} addToUser={addToUser} listType={listType}/>
             </div>
         </li>
     )

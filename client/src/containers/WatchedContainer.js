@@ -3,9 +3,10 @@ import Movie from '../components/MoviesContainerComponents/Movie';
 
 const Watched = ({user, setNewId}) => {
 
+    const [listType, setListType] = useState("watched")
   
     const movies = user[0].watched.map((movie, index) => {
-        return <li><Movie key={index} movie={movie} setNewId={setNewId}/></li>
+        return <li><Movie key={index} movie={movie} setNewId={setNewId} listType={listType}/></li>
     })
 
 
