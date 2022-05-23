@@ -1,7 +1,7 @@
 import React from "react";
 import {Link} from "react-router-dom";
 import WatchButtons from "../ButtonComponents/WatchButtons";
-const Movie = ({movie, setNewId}) => {
+const Movie = ({movie, setNewId, addToToWatch, addToWatched}) => {
 
     const handleClick = (evt) => {
         
@@ -20,7 +20,7 @@ const Movie = ({movie, setNewId}) => {
                 <h4>Year: {movie.Year}</h4>
                 <h4>Type: {movie.Type}</h4>
                 {/* <h4>Year: {movie.imdbID}</h4> */}
-                <WatchButtons />
+                <WatchButtons movie={movie} addToToWatch={addToToWatch} addToWatched={addToWatched}/>
             </div>
         </li>
     )

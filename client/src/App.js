@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import MoviesContainer from './containers/MoviesContainer';
 import MovieDetailContainer from './containers/MovieDetailContainer';
 
-import StockService from './services/StockServices';
+import MovieService from './services/MovieService';
 import UserContext from './context/UserContext';
 import {BrowserRouter, Routes, Route, Navigate} from "react-router-dom";
 import Watched from "./containers/WatchedContainer";
@@ -34,6 +34,22 @@ function App() {
     setId(imdbId)
   }
 
+  const addToToWatch = (movie) => {
+    console.log(movie)
+    const temp = {...user[0]}
+    temp.towatch.push(movie)
+    MovieService.updateUser(temp)
+    .then(() => fetchDB())
+  }
+
+  const addToWatched = (movie) => {
+    console.log(movie)
+    const temp = {...user[0]}
+    temp.watched.push(movie)
+    MovieService.updateUser(temp)
+    .then(() => fetchDB())
+  }
+
 
   return (
     <>
@@ -43,7 +59,7 @@ function App() {
     {/* <UserContext.Provider value={user}> */}
       <Routes>
         <Route path="/" element={<AppContainer />} >
-          <Route path="movies" element={<Movies />} >  
+          <Route path="movies" element={<Movies addToToWatch={addToToWatch} addToWatched={addToWatched} />} >  
           </Route>
           <Route path="/movies/:imdbId" element={<MovieDetailContainer />} />
           <Route path="watched" element={<Watched  user={user} setNewId={setNewId} />} />
