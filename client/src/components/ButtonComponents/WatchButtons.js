@@ -1,4 +1,4 @@
-const WatchButtons = ({addToWatched, addToToWatch, movie}) => {
+const WatchButtons = ({addToUser, movie}) => {
 
     const handleClick = (evt) => {
 
@@ -9,13 +9,9 @@ const WatchButtons = ({addToWatched, addToToWatch, movie}) => {
             Year: movie.Year,
             Type: movie.Type
         }
-        
-        if (evt.target.value === "watched"){
-           
-            addToWatched(movieToAdd);
-        } else{
-            addToToWatch(movieToAdd);
-        }
+
+        const list = evt.target.value;
+        addToUser(movieToAdd, list)
         }
 
     

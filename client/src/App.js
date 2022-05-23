@@ -34,18 +34,18 @@ function App() {
     setId(imdbId)
   }
 
-  const addToToWatch = (movie) => {
-    console.log(movie)
-    const temp = {...user[0]}
-    temp.towatch.push(movie)
-    MovieService.updateUser(temp)
-    .then(() => fetchDB())
-  }
+  // const addToToWatch = (movie) => {
+  //   console.log(movie)
+  //   const temp = {...user[0]}
+  //   temp.towatch.push(movie)
+  //   MovieService.updateUser(temp)
+  //   .then(() => fetchDB())
+  // }
 
-  const addToWatched = (movie) => {
+  const addToUser = (movie, list) => {
     console.log(movie)
     const temp = {...user[0]}
-    temp.watched.push(movie)
+    temp[list].push(movie)
     MovieService.updateUser(temp)
     .then(() => fetchDB())
   }
@@ -59,7 +59,7 @@ function App() {
     {/* <UserContext.Provider value={user}> */}
       <Routes>
         <Route path="/" element={<AppContainer />} >
-          <Route path="movies" element={<Movies addToToWatch={addToToWatch} addToWatched={addToWatched} />} >  
+          <Route path="movies" element={<Movies addToUser={addToUser}/>} >  
           </Route>
           <Route path="/movies/:imdbId" element={<MovieDetailContainer />} />
           <Route path="watched" element={<Watched  user={user} setNewId={setNewId} />} />
