@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import MovieDetails from "../components/MovieDetailContainerComponents/MovieDetails.js";
 import {useParams} from "react-router-dom";
 
-const MovieDetailContainer = ({}) => {
+const MovieDetailContainer = ({addToUser}) => {
 
     const [movie, setMovie] = useState(null);
 
@@ -31,7 +31,7 @@ const MovieDetailContainer = ({}) => {
     return (
         <>
         
-        { movie ? <MovieDetails movie={movie}/> : null}
+        { movie ? <MovieDetails movie={movie} addToUser={addToUser}/> : null}
         
         </>
     )

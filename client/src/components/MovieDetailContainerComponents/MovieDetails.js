@@ -1,6 +1,6 @@
 import WatchButtons from "../ButtonComponents/WatchButtons";
 
-const MovieDetails = ({movie, addToWatched, addToToWatch}) => {
+const MovieDetails = ({movie, addToUser}) => {
     return (
         <>
             <h4>{movie.Title}</h4> 
@@ -11,7 +11,7 @@ const MovieDetails = ({movie, addToWatched, addToToWatch}) => {
             <p>{movie.Plot}</p>
             <h3>Ratings: imdb: {movie.Ratings[0].Value}  rotten tomatoes:{movie.Ratings[1].Value} metacritic: {movie.Ratings[2].Value}</h3>
             <p>Box Office: {movie.BoxOffice}</p>
-            <WatchButtons addToWatched={addToWatched} addToToWatch={addToToWatch} movie={movie}/>
+            <WatchButtons addToUser={addToUser} movie={movie}/>
         
         </>
     )

@@ -61,7 +61,7 @@ function App() {
         <Route path="/" element={<AppContainer />} >
           <Route path="movies" element={<Movies addToUser={addToUser}/>} >  
           </Route>
-          <Route path="/movies/:imdbId" element={<MovieDetailContainer />} />
+          <Route path="/movies/:imdbId" element={<MovieDetailContainer addToUser={addToUser} />} />
           <Route path="watched" element={<Watched  user={user} setNewId={setNewId} />} />
             <Route path="/watched/:imdbId" element={<Navigate to={`/movies/${Id}`} />} /> 
           <Route path="towatch" element = {<ToWatch user={user} setNewId={setNewId} />} />
