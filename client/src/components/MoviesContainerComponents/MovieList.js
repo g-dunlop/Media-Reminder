@@ -2,11 +2,11 @@ import React from "react";
 import Movie from "./Movie";
 
 
-const MovieList = ({movies, addToUser}) => {
+const MovieList = ({movies, addToUser, saveRating}) => {
 
 
     const movieNodes = movies.map((movie, index) => {
-        return <Movie movie={movie} key={index} addToUser={addToUser}/>
+        return <Movie movie={movie} key={index} addToUser={addToUser} saveRating={saveRating}/>
     })
 
     return (

@@ -7,7 +7,8 @@ const WatchButtons = ({addToUser, movie, listType}) => {
             Title: movie.Title,
             Poster: movie.Poster,
             Year: movie.Year,
-            Type: movie.Type
+            Type: movie.Type,
+            Rating:movie.Rating
         }
 
         const list = evt.target.value;
@@ -15,7 +16,6 @@ const WatchButtons = ({addToUser, movie, listType}) => {
         }
 
     
-
 
     return(
 

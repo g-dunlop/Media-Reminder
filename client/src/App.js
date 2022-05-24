@@ -43,6 +43,20 @@ function App() {
   }
 
 
+  const saveRating = (movie) => {
+    console.log(movie)
+    const temp = {...user[0]}
+    for (let i=0; i<temp.watched.length; i++){
+      if(movie.Title === temp.watched[i].Title){
+        temp.watched[i].Rating = movie.Rating
+      }
+    }
+    
+    MovieService.updateUser(temp)
+    .then(() => fetchDB())
+  }
+
+
   return (
     <>
 
@@ -51,10 +65,10 @@ function App() {
     {/* <UserContext.Provider value={user}> */}
       <Routes>
         <Route path="/" element={<AppContainer />} >
-          <Route path="movies" element={<Movies addToUser={addToUser}/>} >  
+          <Route path="movies" element={<Movies addToUser={addToUser} saveRating={saveRating}/>} >  
           </Route>
           <Route path="/movies/:imdbId" element={<MovieDetailContainer addToUser={addToUser} />} />
-          <Route path="watched" element={<Watched  user={user} setNewId={setNewId} />} />
+          <Route path="watched" element={<Watched  user={user} setNewId={setNewId} saveRating={saveRating} />} />
             <Route path="/watched/:imdbId" element={<Navigate to={`/movies/${Id}`} />} /> 
           <Route path="towatch" element = {<ToWatch user={user} setNewId={setNewId} />} />
             <Route path="/towatch/:imdbId" element={<Navigate to={`/movies/${Id}`} />} />

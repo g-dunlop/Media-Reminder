@@ -1,7 +1,25 @@
-import React from "react";
+import React, {useState} from "react";
 import {Link} from "react-router-dom";
 import WatchButtons from "../ButtonComponents/WatchButtons";
-const Movie = ({movie, setNewId, addToUser, listType}) => {
+import {Rating} from 'react-simple-star-rating';
+
+const Movie = ({movie, setNewId, addToUser, listType, saveRating}) => {
+
+    const [rating, setRating] = useState(movie.Rating);
+
+    // Catch Rating value
+    const handleRating = (number) => {
+        setRating(number)
+        saveRating({
+            imdbID: movie.imdbID,
+            Title: movie.Title,
+            Poster: movie.Poster,
+            Year: movie.Year,
+            Type: movie.Type,
+            Rating: rating
+        })
+        // other logic
+    }
 
     const handleClick = (evt) => {
         setNewId(movie.imdbID)
@@ -15,6 +33,7 @@ const Movie = ({movie, setNewId, addToUser, listType}) => {
             {/* <a href="/detail">
                 <h3 onClick={handleClick} id={movie.imdbID}>{movie.Title}</h3>
                 </a> */}
+            {listType === "watched" ? <Rating onClick={handleRating} ratingValue={rating} allowHalfIcon={true}/* Available Props */ /> : null}
             <div className="movie-info">
                 <h4>Year: {movie.Year}</h4>
                 <h4>Type: {movie.Type}</h4>
