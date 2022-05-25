@@ -1,4 +1,4 @@
-const WatchButtons = ({addToUser, removeFromUser, movie, listType}) => {
+const WatchButtons = ({addToUser, removeFromUser, movie, listType, duplicate}) => {
 
     const handleClick = (evt) => {
 
@@ -30,7 +30,7 @@ const WatchButtons = ({addToUser, removeFromUser, movie, listType}) => {
         <div>
             {listType === "watched" ? <button onClick={handleRemoveClick} value="watched">Remove from watched</button> : <button onClick={handleClick} value="watched">Watched</button>  }  
             {listType === "towatch" ? <button onClick={handleRemoveClick} value="towatch">Don't want to watch</button> : <button onClick={handleClick} value="towatch">Want to Watch</button>}
-            
+            {duplicate === true ? <p style={{color:"red"}}>Already added to list! </p> : null}
         </div>
     )
 }

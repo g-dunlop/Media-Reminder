@@ -17,6 +17,7 @@ function App() {
 
   const [user, setUser] = useState(null)
   const [Id, setId] = useState(null)
+  const [duplicate, setDuplicate] = useState(false)
   
 
   useEffect(() => {
@@ -40,6 +41,8 @@ function App() {
     for (let i=0; i<temp[list].length; i++){
       if (movie.Title === temp[list][i].Title){
         console.log("duplicate!")
+        setDuplicate(true)
+        setTimeout(() => {setDuplicate(false)},1000)
         return;
       }
     }
@@ -84,7 +87,7 @@ function App() {
     {/* <UserContext.Provider value={user}> */}
       <Routes>
         <Route path="/" element={<AppContainer />} >
-          <Route path="movies" element={<Movies addToUser={addToUser} saveRating={saveRating}/>} >  
+          <Route path="movies" element={<Movies addToUser={addToUser} saveRating={saveRating} duplicate={duplicate}/>} >  
           </Route>
           <Route path="/movies/:imdbId" element={<MovieDetailContainer addToUser={addToUser} />} />
           <Route path="watched" element={<Watched  user={user} setNewId={setNewId} saveRating={saveRating} removeFromUser={removeFromUser} addToUser={addToUser}/>} />

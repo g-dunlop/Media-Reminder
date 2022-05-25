@@ -3,7 +3,7 @@ import SearchBar from "../components/MoviesContainerComponents/SearchBar";
 import MovieList from "../components/MoviesContainerComponents/MovieList";
 import {Outlet} from "react-router-dom";
 
-const MoviesContainer = ({addToUser}) => {
+const MoviesContainer = ({addToUser, duplicate}) => {
 
     const [apiUrl, setApiUrl] = useState("http://www.omdbapi.com/?s=&apikey=7a9676");
     const [searchResults, setSearchResults] = useState([]);
@@ -32,7 +32,7 @@ const MoviesContainer = ({addToUser}) => {
             <h2>Movies</h2>
             <SearchBar searchApi={searchApi} />
              <Outlet />
-            {searchResults !== undefined ? <MovieList movies={searchResults} addToUser={addToUser} />: null}
+            {searchResults !== undefined ? <MovieList movies={searchResults} addToUser={addToUser} duplicate={duplicate} />: null}
            
         </div>
 
