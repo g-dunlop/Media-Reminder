@@ -9,24 +9,17 @@ const MovieDetailContainer = ({addToUser}) => {
     let params = useParams();
 
     const getMovie = () => {
-        // setSelectedMovieID(imdbId);
+  
         fetch(`http://www.omdbapi.com/?i=${params.imdbId}&apikey=7a9676`)
-            // .then(response => console.log(response))
+            
                 .then(response => response.json())
-                // .then(data => console.log(data))
+                
                 .then(data => setMovie(data));
     }
     useEffect(()=> {
         getMovie()
     }, [])
     
-
-    // const [movie, setMovie] = useState(null)
-
-    // useEffect(() => {
-    //     setMovie(selectedMovie)
-    //     console.log(movie);
-    // }, [])
     
     return (
         <>

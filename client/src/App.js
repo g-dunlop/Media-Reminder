@@ -18,6 +18,7 @@ function App() {
   const [user, setUser] = useState(null)
   const [Id, setId] = useState(null)
   const [duplicate, setDuplicate] = useState(false)
+  const [feedback, setFeedback] = useState(false)
   
 
   useEffect(() => {
@@ -49,6 +50,9 @@ function App() {
     temp[list].push(movie)
     MovieService.updateUser(temp)
     .then(() => fetchDB())
+    setFeedback(true)
+    setTimeout(() => {setFeedback(false)},1000)
+        return;
   }
 
   const removeFromUser = (movieID, list) => {
@@ -87,7 +91,7 @@ function App() {
     {/* <UserContext.Provider value={user}> */}
       <Routes>
         <Route path="/" element={<AppContainer />} >
-          <Route path="movies" element={<Movies addToUser={addToUser} saveRating={saveRating} duplicate={duplicate}/>} >  
+          <Route path="movies" element={<Movies addToUser={addToUser} saveRating={saveRating} duplicate={duplicate} feedback={feedback}/>} >  
           </Route>
           <Route path="/movies/:imdbId" element={<MovieDetailContainer addToUser={addToUser} />} />
           <Route path="watched" element={<Watched  user={user} setNewId={setNewId} saveRating={saveRating} removeFromUser={removeFromUser} addToUser={addToUser}/>} />

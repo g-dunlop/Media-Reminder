@@ -4,9 +4,9 @@ import Movie from '../components/MoviesContainerComponents/Movie';
 
 const ToWatch = ({user, setNewId, removeFromUser, addToUser}) => {
 
-    // const {user} = useContext(UserContext);
+   
     
-    // console.log(user)
+   
     const [listType, setListType] = useState("towatch")
 
 
