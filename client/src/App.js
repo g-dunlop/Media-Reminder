@@ -37,6 +37,12 @@ function App() {
   const addToUser = (movie, list) => {
     console.log(movie)
     const temp = {...user[0]}
+    for (let i=0; i<temp[list].length; i++){
+      if (movie.Title === temp[list][i].Title){
+        console.log("duplicate!")
+        return;
+      }
+    }
     temp[list].push(movie)
     MovieService.updateUser(temp)
     .then(() => fetchDB())
