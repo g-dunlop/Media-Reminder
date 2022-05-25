@@ -1,9 +1,9 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {Link} from "react-router-dom";
 import WatchButtons from "../ButtonComponents/WatchButtons";
 import {Rating} from 'react-simple-star-rating';
 
-const Movie = ({movie, setNewId, addToUser, listType, saveRating}) => {
+const Movie = ({movie, setNewId, addToUser, listType, saveRating, removeFromUser}) => {
 
     const [rating, setRating] = useState(movie.Rating);
 
@@ -21,6 +21,7 @@ const Movie = ({movie, setNewId, addToUser, listType, saveRating}) => {
         // other logic
     }
 
+    
     const handleClick = (evt) => {
         setNewId(movie.imdbID)
     }
@@ -38,7 +39,7 @@ const Movie = ({movie, setNewId, addToUser, listType, saveRating}) => {
                 <h4>Year: {movie.Year}</h4>
                 <h4>Type: {movie.Type}</h4>
                 {/* <h4>Year: {movie.imdbID}</h4> */}
-                <WatchButtons movie={movie} addToUser={addToUser} listType={listType}/>
+                <WatchButtons movie={movie} addToUser={addToUser} listType={listType} removeFromUser={removeFromUser} addToUser={addToUser}/>
             </div>
         </li>
     )

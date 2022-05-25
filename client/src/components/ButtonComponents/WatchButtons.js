@@ -1,4 +1,4 @@
-const WatchButtons = ({addToUser, movie, listType}) => {
+const WatchButtons = ({addToUser, removeFromUser, movie, listType}) => {
 
     const handleClick = (evt) => {
 
@@ -15,13 +15,21 @@ const WatchButtons = ({addToUser, movie, listType}) => {
         addToUser(movieToAdd, list)
         }
 
+    const handleRemoveClick = (evt) => {
+        const movieID = movie.imdbID
+        const list = evt.target.value
+
+        removeFromUser(movieID, list)
+       
+    }
+
     
 
     return(
 
         <div>
-            {listType === "watched" ? <button onClick={handleClick} value="removewatched">Remove from watched</button> : <button onClick={handleClick} value="watched">Watched</button>  }  
-            {listType === "towatch" ? <button onClick={handleClick} value="removetowatch">Don't want to watch</button> : <button onClick={handleClick} value="towatch">Want to Watch</button>}
+            {listType === "watched" ? <button onClick={handleRemoveClick} value="watched">Remove from watched</button> : <button onClick={handleClick} value="watched">Watched</button>  }  
+            {listType === "towatch" ? <button onClick={handleRemoveClick} value="towatch">Don't want to watch</button> : <button onClick={handleClick} value="towatch">Want to Watch</button>}
             
         </div>
     )

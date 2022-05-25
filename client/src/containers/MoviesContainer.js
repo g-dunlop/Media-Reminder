@@ -3,7 +3,7 @@ import SearchBar from "../components/MoviesContainerComponents/SearchBar";
 import MovieList from "../components/MoviesContainerComponents/MovieList";
 import {Outlet} from "react-router-dom";
 
-const MoviesContainer = ({addToUser, saveRating}) => {
+const MoviesContainer = ({addToUser}) => {
 
     const [apiUrl, setApiUrl] = useState("http://www.omdbapi.com/?s=&apikey=7a9676");
     const [searchResults, setSearchResults] = useState([]);
@@ -25,10 +25,6 @@ const MoviesContainer = ({addToUser, saveRating}) => {
             setApiUrl(newUrl)
         }
 
-        const removeSearchResults = () => {
-            setSearchResults(undefined)
-        }
-
     
 
     return (
@@ -36,7 +32,7 @@ const MoviesContainer = ({addToUser, saveRating}) => {
             <h2>Movies</h2>
             <SearchBar searchApi={searchApi} />
              <Outlet />
-            {searchResults !== undefined ? <MovieList movies={searchResults} addToUser={addToUser} saveRating={saveRating}/>: null}
+            {searchResults !== undefined ? <MovieList movies={searchResults} addToUser={addToUser} />: null}
            
         </div>
 

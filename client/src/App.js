@@ -42,6 +42,19 @@ function App() {
     .then(() => fetchDB())
   }
 
+  const removeFromUser = (movieID, list) => {
+    console.log(movieID)
+    const temp = {...user[0]}
+    console.log(temp[list])
+    for (let i=0; i<temp[list].length; i++){
+      if(movieID === temp[list][i].imdbID){
+        temp[list].splice(i, 1);
+      }
+  }
+    MovieService.updateUser(temp)
+    .then(() => fetchDB())
+}
+
 
   const saveRating = (movie) => {
     console.log(movie)
@@ -68,9 +81,10 @@ function App() {
           <Route path="movies" element={<Movies addToUser={addToUser} saveRating={saveRating}/>} >  
           </Route>
           <Route path="/movies/:imdbId" element={<MovieDetailContainer addToUser={addToUser} />} />
-          <Route path="watched" element={<Watched  user={user} setNewId={setNewId} saveRating={saveRating} />} />
+          <Route path="watched" element={<Watched  user={user} setNewId={setNewId} saveRating={saveRating} removeFromUser={removeFromUser} addToUser={addToUser}/>} />
             <Route path="/watched/:imdbId" element={<Navigate to={`/movies/${Id}`} />} /> 
-          <Route path="towatch" element = {<ToWatch user={user} setNewId={setNewId} />} />
+            {/* <Route path="watched/towatch" element={<Navigate to={"towatch"} />} /> */}
+          <Route path="towatch" element = {<ToWatch user={user} setNewId={setNewId} removeFromUser={removeFromUser} addToUser={addToUser}/>} />
             <Route path="/towatch/:imdbId" element={<Navigate to={`/movies/${Id}`} />} />
           <Route path="*" element={
             <main style={{ padding: "1rem" }}>
